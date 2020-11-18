@@ -1,24 +1,40 @@
 package ec.ups.edu.appdis.g1.parqueadero.negocio;
 
+import java.sql.SQLException;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+import ec.ups.edu.appdis.g1.parqueadero.dao.FacturaDAO;
 import ec.ups.edu.appdis.g1.parqueadero.modelo.Factura;
 import ec.ups.edu.appdis.g1.parqueadero.modelo.Ticket;
-
+@Stateless
 public class GestionFacturasON {
+	@Inject
+	private FacturaDAO daoFactura;
 		public boolean imprimirFactura(Factura factura) {
+			
 			return true;
 		}
 		
-		public Ticket buscarTicket(String placa) {
+		public Ticket buscarFactura(int id) throws SQLException {
+			daoFactura.read(id);
 			return null;
 			
 		}
-		public double calcularTiempo(int idTicket) {
-			return 0;
+		public boolean guardarFactura(Factura factura) throws SQLException {
+			daoFactura.insert(factura);
+			return true;
 			
 		}
 		
-		public double calcularFactura(int idFactura) {
-		return 0;	
+		public boolean eliminarFactura(int idFactura) throws SQLException {
+			daoFactura.delete(idFactura);
+		return true;	
+		}
+		public boolean actualizarFactura(Factura factura) throws SQLException {
+			daoFactura.update(factura);
+		return true;	
 		}
 		
 		
