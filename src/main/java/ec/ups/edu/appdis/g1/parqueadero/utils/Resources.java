@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 public class Resources {
 
-	String dsName = "java:comp/DefaultDataSource";
+	String dsName = "java:comp/MySqlDS";
 
     @Produces
     private Connection createConnection() throws SQLException, NamingException {
